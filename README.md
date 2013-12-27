@@ -7,7 +7,7 @@
 ## Running the app
     lcm server
 or
-    node ./node_modules/locomotive/bin/lcm.js server
+   node ./node_modules/locomotive/bin/lcm.js server
 
 ## Directory Layout
     Coming soon!
