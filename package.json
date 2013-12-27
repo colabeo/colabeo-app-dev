@@ -1,0 +1,20 @@
+{
+  "name": "colabeo",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "locomotive": "~0.4.0",
+    "express": "~3.4.7",
+    "ejs": "~0.8.5",
+    "passport": "~0.1.17",
+    "passport-local": "~0.1.6",
+    "bcrypt": "~0.7.7",
+    "parse": "~1.2.13",
+    "sendgrid": "~0.4.6",
+    "connect-flash": "~0.1.1",
+    "firebase": "~0.6.22",
+    "firebase-token-generator": "~0.1.4",
+    "btoa": "~1.1.1",
+    "passport-facebook": "~1.0.2"
+  }
+}

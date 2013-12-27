@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Colabeo</title>
+    <link rel="icon" 
+      type="image/png" 
+      href="favicon.png">
+    <link rel="stylesheet" href="//code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+    <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="//code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+    <script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
+    <script src="/js/mainpanel/jquery.cookie.js"></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link href="/css/panel-main.css?1" rel="stylesheet">
+    <script src="/js/mainpanel/panel-main.js">
+    </script>
+</head>
+<body>
+
+<div id="userId" data-key="userId" data-value=""></div>
+<div id="userLastName" data-key="userLastName" data-value=""></div>
+<div id="userFirstName" data-key="userFirstName" data-value=""></div>
+
+<!-- Start of first page: #one -->
+<div data-role="page" id="one">
+    <!--<div data-role="navbar" data-iconpos="top">
+        <ul>
+            <li>
+                <a data-icon="grid" href="#one" class="ui-btn-active ui-state-persist">Contacts</a>
+            </li>
+            <li>
+                <a data-icon="star" href="#two">Sharing</a>
+            </li>
+        </ul>
+    </div>-->
+    <!-- /navbar -->
+    <div id="header" data-role="header" style="display: none">
+        <h1></h1>
+    </div>
+    <!-- /header -->
+    <div data-role="content">
+        <p>
+        <div data-role="header" data-theme="d">
+          <a onclick="window.location='/logout'" data-inline="true">log out</a>
+          <h1>All Contacts</h1>
+          <a href="#popupAddContact" data-inline="true" data-rel="popup" data-position-to="window" data-role="button" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c" data-icon="plus" data-iconpos="notext" aria-haspopup="true" aria-owns="popupLogin" aria-expanded="false">
+          </a>
+        </div> 
+        </p>
+        <ul id="contactlist" data-role="listview" data-inset="true" data-filter="true" data-split-theme="d" data-split-icon="delete">
+        </ul>
+        <a href="#" data-role="button" data-inline="true" id="link_facebook">link Facebook</a>
+        <a href="#" data-role="button" data-inline="true" id="unlink_facebook" style="display: none">unlink Facebook</a>
+        <hr>
+        <p>
+            <a id='answer' href="#popup" data-role="button" data-rel="dialog" data-transition="pop" style="display: none">Answer</a>
+        </p>
+        <!--
+        <p>
+            <a onclick='window.location="/forget"' >Forget Me</a>
+        </p>
+        -->
+    </div>
+
+    <div data-role="popup" id="popupAddContact" data-theme="b" data-overlay-theme="a" class="ui-corner-all ui-popup ui-body-a ui-overlay-shadow">
+        <form id="addContactForm">
+            <div style="padding:10px 20px;">
+                <h3>Add a Contact</h3>
+                <label for="lastName" class="ui-hidden-accessible">Last Name:</label>
+                <input type="text" name="lastName" id="lastName" value="" placeholder="Last Name">
+                <label for="firstName" class="ui-hidden-accessible">First Name:</label>
+                <input type="text" name="firstName" id="firstName" value="" placeholder="First Name">
+                <label for="email" class="ui-hidden-accessible">Email:</label>
+                <input type="text" name="email" id="email" value="" placeholder="Email Address">
+                <button id="saveContactBtn" type="submit" data-icon="check">Save Contact</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- /content -->
+    <!--
+    <p><a id="importContacts" onClick='window.location="/contact/import"' data-role="button">Import contacts from Yammer</a></p>
+    -->
+    <div>
+        <h4></h4>
+        <a id='showPopup' href="#popup" data-rel="dialog" data-transition="pop" style='display:none;'></a>
+    </div>
+    <!-- /footer -->
+</div>
+<!-- /page one --><!-- Start of second page: #two -->
+<div data-role="page" id="two" data-theme="a" data-url="two" tabindex="0" class="ui-page ui-body-a" style="min-height: 779px;">
+    <!--<div data-role="navbar" id="navbar" data-iconpos="top">
+        <ul>
+            <li>
+                <a data-icon="grid" href="#one">Contacts</a>
+            </li>
+            <li>
+                <a data-icon="star" href="#two" class="ui-btn-active ui-state-persist">Sharing</a>
+            </li>
+        </ul>
+    </div>-->
+    <!-- /navbar -->
+    <div data-role="header" class="ui-header ui-bar-a" role="banner" style="display: none">
+        <h1 class="ui-title" role="heading" aria-level="1"></h1>
+    </div>
+    <!-- /header -->
+    <div data-role="content" data-theme="a" class="ui-content ui-body-a" role="main">
+        <div data-role="fieldcontain" class="ui-hide-label">
+            <input type="search" name="url" id="url" value="" data-mini="true" />
+        </div><a id="gotoBtn" data-direction="reverse" data-role="button" data-theme="b" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="ui-btn ui-btn-up-b ui-shadow ui-btn-corner-all"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Sumbit</span></span></a>
+        <div class="urlList" style="margin-top: 30px;">
+            <ul data-role="listview" data-inset=true>
+            </ul>
+        </div>
+    </div>
+    <!-- /content -->
+    <!--<div data-role="footer" class="ui-footer ui-bar-a" role="contentinfo" style="display: none">
+        <h4 class="ui-title" role="heading" aria-level="1"></h4>
+    </div>-->
+    <!-- /footer -->
+</div>
+<!-- Start of second page: #popup -->
+<div data-role="dialog" id="popup" data-url="popup">
+    <div data-role="header" data-theme="a" style="opacity: 0; height: 0px;">
+        <h1></h1>
+    </div>
+    <!-- /header -->
+    <div data-role="content" data-theme="a">
+        <div style="text-align: center; height: 300px;">
+            <div class="incomeCallInfo">
+                <p class="incperson">
+                </p>
+                <p class="incsocial">
+                </p>
+            </div>
+            <div>
+                <a href="#one" class="endBtn" style="color: white; margin-top: 40px;">End</a>
+            </div>
+            <div data-role="navbar">
+		          <ul>
+                <li>
+                  <label for="flip-video" data-inline="true">Video</label>
+                  <select name="flip-video" id="flip-video" data-role="slider" style="display: inline=" data-mini="true">
+                    <option value="false">Off</option>
+                    <option value="true" selected>On</option>
+                  </select>
+                </li>
+                <li>
+                  <a href="#" class="syncBtn" style="color: white; margin-top: 25px;">Sync</a>
+                </li>  
+                <li>
+                  <label for="flip-audio" data-inline="true">Audio</label>
+                  <select name="flip-audio" id="flip-audio" data-role="slider" data-inline="true" data-mini="true">
+                    <option value="false">Off</option>
+                    <option value="true" selected>On</option>
+                  </select>
+                </li>
+                
+              </ul>  
+            </div>
+        </div>
+    </div>
+    <!-- /content -->
+    <!--<div data-role="footer" style="display: none">
+        <h4></h4>
+    </div>-->
+    <!-- /footer -->
+</div>
+<!-- /page popup --><!-- Start of incoming page: #p -->
+<div data-role="dialog" id="p" data-url="p" style="height: 100%">
+    <div data-role="header" data-theme="a" style="display: none;">
+        <h1></h1>
+    </div>
+    <!-- /header -->
+    <div data-role="callcontent" id="callcontent">
+        <div class="incomeCallInfo">
+            <p class="incperson">
+            </p>
+            <p class="incsocial">
+            </p>
+        </div>
+        <a id="acceptBtn" href="#popup">Accept</a>
+        <a id="declineBtn" href="#one">Decline</a>
+    </div>
+</div>
+<!-- /content -->
+<!--<div data-role="footer" style="display: none">
+    <h4></h4>
+</div>-->
+<!-- /footer -->
+</div>
+<!-- /page p -->
+</body>
+</html>

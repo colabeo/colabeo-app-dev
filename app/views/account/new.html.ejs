@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Colabeo Login Form</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Bootstrap 3 CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Eternity Login , Registration & Forgot Password Forms CSS -->
+    <link href="/css/forms.css" rel="stylesheet" />
+
+    <!-- Modenizer -->
+    <script src="/js/lib/modernizr.js"></script>
+
+    <!-- Animations CSS -->
+    <link href="/css/animate.min.css" rel="stylesheet" />
+
+    <!-- Font Icons -->
+    <link href="/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- Google Web Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+</head>
+<body style="background-color: grey">
+<br />
+<br />
+<br />
+<div class="container eternity-form">
+    <div class="login-form-section">
+        <div class="login-content animated bounceIn">
+            <form method="POST" action="/login">
+                <div class="section-title">
+                    <h3>LogIn to your Account</h3>
+                </div>
+                <div class="textbox-wrap">
+                    <div class="input-group">
+                        <span class="input-group-addon "><i class="icon-user icon-color"></i></span>
+                        <input name="username" type="text" required="required" class="form-control" placeholder="Username" />
+                    </div>
+                </div>
+                <div class="textbox-wrap">
+                    <div class="input-group">
+                        <span class="input-group-addon "><i class="icon-key icon-color"></i></span>
+                        <input name="password" type="password" required="required" class="form-control " placeholder="Password" />
+                    </div>
+                </div>
+                <div class="login-form-action clearfix">
+                    <div class="checkbox pull-left">
+                        <div class="custom-checkbox">
+                            <input type="checkbox" checked name="iCheck">
+                        </div>
+                        <span class="checkbox-text pull-left">&nbsp;Remember Me</span>
+                    </div>
+                    <button type="submit" class="btn btn-success pull-right green-btn">LogIn &nbsp; <i class="icon-chevron-right"></i></button>
+                </div>
+            </form>
+        </div>
+        <div class="login-form-links link1 animated fadeInLeftBig">
+            <h4 class="blue">Don't have an Account?</h4>
+            <span>No worry</span>
+            <a href="register" class="blue">Click Here</a>
+            <span>to Register</span>
+        </div>
+        <div class="login-form-links link2 animated fadeInRightBig">
+            <h4 class="green">Forget your Password?</h4>
+            <span>Dont worry</span>
+            <a href="#" class="green">Click Here</a>
+            <span>to Get New One</span>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<br />
+
+<!-- Jquery   -->
+<script src="/js/lib/jquery/jquery-1.9.1.min.js"></script>
+
+<!-- PlaceHolder For Older Browsers -->
+<script src="/js/lib/placeholders.min.js"></script>
+
+<!-- Custom Checkbox PLugin -->
+<script src="/js/lib/jquery/jquery.icheck.js"></script>
+
+<!-- Media Query Support For Older Browsers [Ie 8 & lower] -->
+<script src="/js/lib/respond.min.js"></script>
+
+
+<!-- For Initializing Checkbox And Focus Event For Textbox -->
+<script type="text/javascript">
+    $(function () {
+
+        //Custom Checkbox For Light Theme
+        $("input").iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            increaseArea: '20%'
+        });
+
+
+        //Custom Checkbox For Dark Theme
+        $(".dark input").iCheck({
+            checkboxClass: 'icheckbox_polaris',
+            increaseArea: '20%'
+        });
+
+
+        //TextBox Focus Event
+        $(".form-control").focus(function () {
+            $(this).closest(".textbox-wrap").addClass("focused");
+        }).blur(function () {
+                    $(this).closest(".textbox-wrap").removeClass("focused");
+                });
+
+    });
+</script>
+</body>
+</html>

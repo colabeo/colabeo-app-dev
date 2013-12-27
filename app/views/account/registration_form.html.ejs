@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Registration Form</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+
+    <!-- Bootstrap 3 CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Eternity Login , Registration & Forgot Password Forms CSS -->
+    <link href="/css/forms.css" rel="stylesheet" />
+
+    <!-- Modenizer -->
+    <script src="/js/lib/modernizr.js"></script>
+
+    <!-- Animations CSS -->
+    <link href="/css/animate.min.css" rel="stylesheet" />
+
+    <!-- Font Icons -->
+    <link href="/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- Google Web Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+</head>
+<body style="background-color: grey">
+<br />
+<br />
+<br />
+<div class="container eternity-form">
+    <div class="registration-form-section">
+      <% if ((message) && (message != "")) { %>
+      <div class="login-form-links link2 animated bounceIn" style="">
+          <span><%=message%></span>
+      </div>
+      <% } %>
+
+        <form method="POST" action="/signup">
+            <div class="section-title reg-header animated fadeInDown">
+                <h3>Get your Account Here </h3>
+
+            </div>
+            <div class="clearfix">
+                <div class="col-sm-6 registration-left-section  animated fadeInUp">
+                    <div class="reg-content">
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <span class="input-group-addon "><i class="icon-user icon-color"></i></span>
+                                <input type="text" name="firstname" class="form-control " placeholder="FirstName" required="required" />
+                            </div>
+                        </div>
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <span class="input-group-addon "><i class="icon-user icon-color"></i></span>
+                                <input type="text" name="lastname" class="form-control " placeholder="LastName" required="required"/>
+                            </div>
+                        </div>
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <span class="input-group-addon "><i class="icon-envelope icon-color"></i></span>
+                                <input type="email" name="email" class="form-control " placeholder="Email Address" required="required" />
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="col-sm-6 registration-right-section animated fadeInUp">
+                    <div class="reg-content">
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <span class="input-group-addon "><i class="icon-key icon-color"></i></span>
+                                <input type="password" name="password" class="form-control " placeholder="Password" required="required" />
+                            </div>
+                        </div>
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <span class="input-group-addon "><i class="icon-key icon-color"></i></span>
+                                <input type="password" name="confirmedpassword" class="form-control " placeholder="Confirm-Password" required="required" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="registration-form-action clearfix animated fadeInUp">
+                <a href="/" class="btn btn-success pull-left blue-btn ">
+                    <i class="icon-chevron-left"></i>&nbsp; &nbsp;Back To Login
+                </a>
+                <button type="submit" class="btn btn-success pull-right green-btn ">Register Now &nbsp; <i class="icon-chevron-right"></i></button>
+
+            </div>
+        </form>
+    </div>
+
+</div>
+<br />
+<br />
+<br />
+
+
+<!-- Jquery   -->
+<script src="/js/lib/jquery/jquery-1.9.1.min.js"></script>
+
+<!-- PlaceHolder For Older Browsers -->
+<script src="/js/lib/placeholders.min.js"></script>
+
+<!-- Custom Checkbox PLugin -->
+<script src="/js/lib/jquery/jquery.icheck.js"></script>
+
+<!-- Media Query Support For Older Browsers [Ie 8 & lower] -->
+<script src="/js/lib/respond.min.js"></script>
+
+
+
+<!-- For Initializing Checkbox And Focus Event For Textbox -->
+<script type="text/javascript">
+    $(function () {
+
+        //Custom Checkbox For Light Theme
+        $("input").iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            increaseArea: '20%'
+        });
+
+
+        //Custom Checkbox For Dark Theme
+        $(".dark input").iCheck({
+            checkboxClass: 'icheckbox_polaris',
+            increaseArea: '20%'
+        });
+
+
+        //TextBox Focus Event
+        $(".form-control").focus(function () {
+            $(this).closest(".textbox-wrap").addClass("focused");
+        }).blur(function () {
+                    $(this).closest(".textbox-wrap").removeClass("focused");
+                });
+
+    });
+</script>
+</body>
+</html>
