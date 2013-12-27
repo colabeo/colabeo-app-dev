@@ -1,4 +1,4 @@
-# Beta Version of Colabeos
+# Alpha Version of Colabeos
 
 
 ## Installation
